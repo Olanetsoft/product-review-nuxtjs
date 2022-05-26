@@ -63,7 +63,16 @@
               <div v-if="preview" class="shadow-md rounded px-4 pt-3 pb-4 mb-4">
                 <img
                   :src="image"
-                  class="w-full rounded-lg mb-2 border-2 border-gray-200 size-64 mx-auto shadow-md hover:shadow-lg hover:border-gray-500"
+                  class="
+                    w-full
+                    rounded-lg
+                    mb-2
+                    border-2 border-gray-200
+                    size-64
+                    mx-auto
+                    shadow-md
+                    hover:shadow-lg hover:border-gray-500
+                  "
                 />
 
                 <label
@@ -106,7 +115,7 @@
         <div class="w-1/2">
           <form
             @submit.prevent="submit"
-            class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
+            class="bg-white shadow-md rounded px-6 pt-6 pb-4 mb-4"
           >
             <div class="mb-4">
               <label
@@ -165,23 +174,21 @@
               <p v-if="uploaded" class="text-green-500 text-sm italic mb-1">
                 Image uploaded!
               </p>
-              <div class="mb-4 mt-6">
-                <button
-                  class="
-                    bg-blue-500
-                    hover:bg-blue-700
-                    text-white
-                    font-bold
-                    py-1
-                    px-4
-                    rounded
-                    focus:outline-none focus:shadow-outline
-                  "
-                  type="submit"
-                >
-                  Submit
-                </button>
-              </div>
+              <button
+                class="
+                  bg-blue-500
+                  hover:bg-blue-700
+                  text-white
+                  font-bold
+                  py-1
+                  px-4
+                  rounded
+                  focus:outline-none focus:shadow-outline
+                "
+                type="submit"
+              >
+                Submit
+              </button>
             </div>
           </form>
         </div>
