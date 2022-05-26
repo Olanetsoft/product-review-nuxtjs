@@ -5,7 +5,6 @@
         Create product review with images in Nuxt.js
       </h1>
       <div class="flex justify-center mt-4">
-        
         <div v-if="preview" class="w-1/2 mr-20">
           <div class="flex flex-wrap justify-center">
             <!-- <div class="w-full px-3 mb-6 h-24"> -->
@@ -73,7 +72,7 @@
                 class="block text-gray-700 text-xl font-bold mb-2"
                 for="description"
               >
-                Product Review
+                Comment <span class="text-red-500">*</span>
               </label>
               <textarea
                 class="
@@ -97,12 +96,12 @@
             <p v-if="error" class="text-red-500 text-sm italic mb-4">
               Please all fields are required!
             </p>
-            <div class="mb-4">
+            <div class="mb-4 mt-4">
               <label
                 class="block text-gray-700 text-xl font-bold mb-2"
                 for="image"
               >
-                Image
+                Image <span class="text-red-500">*</span>
               </label>
 
               <button
@@ -111,16 +110,16 @@
                   hover:bg-blue-700
                   text-white
                   font-bold
-                  py-2
-                  px-4
+                  px-2
                   rounded
                   focus:outline-none focus:shadow-outline
                   mb-2
+                  py-1
                 "
                 type="button"
                 @click="openCloudinaryWidget"
               >
-                Upload Image
+                Upload
               </button>
               <p v-if="uploaded" class="text-green-500 text-sm italic mb-2">
                 Image uploaded!
@@ -132,7 +131,7 @@
                     hover:bg-blue-700
                     text-white
                     font-bold
-                    py-2
+                    py-1
                     px-4
                     rounded
                     focus:outline-none focus:shadow-outline
