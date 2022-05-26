@@ -5,6 +5,64 @@
         Create product review with images in Nuxt.js
       </h1>
       <div class="flex justify-center mt-4">
+        
+        <div v-if="preview" class="w-1/2 mr-20">
+          <div class="flex flex-wrap justify-center">
+            <!-- <div class="w-full px-3 mb-6 h-24"> -->
+            <div class="w-full px-3 mb-6 h-24">
+              <label
+                class="
+                  block
+                  uppercase
+                  tracking-wide
+                  text-gray-700 text-xl
+                  font-bold
+                  mb-2
+                "
+                for="grid-first-name"
+              >
+                Comments
+              </label>
+              <!-- <img :src="image" class="w-full h-64" /> -->
+              <!-- Style the image to be small and centered when displayed -->
+              <img :src="image" class="w-full h-64 rounded-lg" />
+
+              <label
+                class="
+                  block
+                  uppercase
+                  tracking-wide
+                  text-gray-700 text-l
+                  font-bold
+                  mb-2
+                "
+                for="grid-first-name"
+              >
+                Text
+              </label>
+              <input
+                class="
+                  appearance-none
+                  block
+                  w-full
+                  bg-gray-200
+                  text-gray-700
+                  border border-gray-200
+                  rounded
+                  py-3
+                  px-4
+                  leading-tight
+                  focus:outline-none focus:bg-white focus:border-gray-500
+                "
+                id="grid-first-name"
+                type="text"
+                readonly
+                v-model="text"
+              />
+            </div>
+          </div>
+        </div>
+
         <div class="w-1/2">
           <form
             @submit.prevent="submit"
@@ -57,13 +115,16 @@
                   px-4
                   rounded
                   focus:outline-none focus:shadow-outline
+                  mb-2
                 "
                 type="button"
                 @click="openCloudinaryWidget"
               >
                 Upload Image
               </button>
-
+              <p v-if="uploaded" class="text-green-500 text-sm italic mb-2">
+                Image uploaded!
+              </p>
               <div class="mb-4 mt-12">
                 <button
                   class="
@@ -84,60 +145,6 @@
             </div>
           </form>
         </div>
-
-        <div v-if="preview" class="w-1/2 ml-20">
-          <div class="flex flex-wrap -mx-3 mb-6">
-            <div class="w-full px-3">
-              <label
-                class="
-                  block
-                  uppercase
-                  tracking-wide
-                  text-gray-700 text-xl
-                  font-bold
-                  mb-2
-                "
-                for="grid-first-name"
-              >
-                Uploaded Image
-              </label>
-              <img :src="image" class="w-full h-64" />
-
-              <label
-                class="
-                  block
-                  uppercase
-                  tracking-wide
-                  text-gray-700 text-l
-                  font-bold
-                  mb-2
-                "
-                for="grid-first-name"
-              >
-                Text
-              </label>
-              <input
-                class="
-                  appearance-none
-                  block
-                  w-full
-                  bg-gray-200
-                  text-gray-700
-                  border border-gray-200
-                  rounded
-                  py-3
-                  px-4
-                  leading-tight
-                  focus:outline-none focus:bg-white focus:border-gray-500
-                "
-                id="grid-first-name"
-                type="text"
-                readonly
-                v-model="text"
-              />
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   </div>
@@ -153,17 +160,19 @@ export default {
       text: "",
       error: false,
       preview: false,
+      uploaded: false,
     };
   },
 
   methods: {
     submit() {
       if (this.description === "" || this.image.length === "") {
+        this.preview = false;
         this.error = true;
+      } else {
+        this.text = this.description;
+        this.preview = true;
       }
-
-      this.text = this.description;
-      this.preview = true;
     },
 
     createCloudinaryWidget() {
@@ -184,6 +193,7 @@ export default {
             console.log(result.info);
             //save url to a server database, or preform any other logic here
             this.image = result.info.secure_url;
+            this.uploaded = true;
           }
         }
       );
