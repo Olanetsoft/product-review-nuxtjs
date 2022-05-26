@@ -5,9 +5,8 @@
         Create product review with images in Nuxt.js
       </h1>
       <div class="flex justify-center mt-4">
-        <div v-if="preview" class="w-1/2 mr-20">
+        <div class="w-1/2 mr-20">
           <div class="flex flex-wrap justify-center">
-            <!-- <div class="w-full px-3 mb-6 h-24"> -->
             <div class="w-full px-3 mb-6 h-24">
               <label
                 class="
@@ -16,48 +15,90 @@
                   tracking-wide
                   text-gray-700 text-xl
                   font-bold
-                  mb-2
+                  mb-4
                 "
                 for="grid-first-name"
               >
                 Comments
               </label>
-              <!-- <img :src="image" class="w-full h-64" /> -->
-              <!-- Style the image to be small and centered when displayed -->
-              <img :src="image" class="w-full h-64 rounded-lg" />
+              <div class="shadow-md rounded px-4 pt-3 pb-4 mb-4">
+                <p
+                  class="
+                    text-center text-l
+                    font-bold
+                    mb-2
+                    border-2 border-gray-200
+                  "
+                >
+                  Image Here!!!
+                </p>
 
-              <label
-                class="
-                  block
-                  uppercase
-                  tracking-wide
-                  text-gray-700 text-l
-                  font-bold
-                  mb-2
-                "
-                for="grid-first-name"
-              >
-                Text
-              </label>
-              <input
-                class="
-                  appearance-none
-                  block
-                  w-full
-                  bg-gray-200
-                  text-gray-700
-                  border border-gray-200
-                  rounded
-                  py-3
-                  px-4
-                  leading-tight
-                  focus:outline-none focus:bg-white focus:border-gray-500
-                "
-                id="grid-first-name"
-                type="text"
-                readonly
-                v-model="text"
-              />
+                <label
+                  class="block uppercase text-gray-700 text-sm font-bold mb-2"
+                  for="grid-first-name"
+                >
+                  Review
+                </label>
+                <input
+                  class="
+                    appearance-none
+                    block
+                    w-full
+                    bg-gray-100
+                    text-gray-800
+                    border border-gray-200
+                    rounded
+                    py-1
+                    px-2
+                    leading-tight
+                    focus:outline-none focus:bg-white focus:border-gray-500
+                  "
+                  id="grid-first-name"
+                  type="text"
+                  readonly
+                  value="I love this product"
+                />
+              </div>
+
+              <div v-if="preview" class="shadow-md rounded px-4 pt-3 pb-4 mb-4">
+                <img
+                  :src="image"
+                  class="w-full rounded-lg mb-2 border-2 border-gray-200 size-64 mx-auto shadow-md hover:shadow-lg hover:border-gray-500"
+                />
+
+                <label
+                  class="
+                    block
+                    uppercase
+                    tracking-wide
+                    text-gray-700 text-sm
+                    font-bold
+                    mb-2
+                  "
+                  for="grid-first-name"
+                >
+                  Review
+                </label>
+                <input
+                  class="
+                    appearance-none
+                    block
+                    w-full
+                    bg-gray-200
+                    text-gray-700
+                    border border-gray-200
+                    rounded
+                    py-1
+                    px-2
+                    leading-tight
+                    focus:outline-none focus:bg-white focus:border-gray-500
+                  "
+                  id="grid-first-name"
+                  type="text"
+                  readonly
+                  v-model="text"
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -67,7 +108,7 @@
             @submit.prevent="submit"
             class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
           >
-            <div class="">
+            <div class="mb-4">
               <label
                 class="block text-gray-700 text-xl font-bold mb-2"
                 for="description"
@@ -121,10 +162,10 @@
               >
                 Upload
               </button>
-              <p v-if="uploaded" class="text-green-500 text-sm italic mb-2">
+              <p v-if="uploaded" class="text-green-500 text-sm italic mb-1">
                 Image uploaded!
               </p>
-              <div class="mb-4 mt-12">
+              <div class="mb-4 mt-6">
                 <button
                   class="
                     bg-blue-500
